@@ -24,7 +24,8 @@ import {
     Quote,
     ChevronLeft,
     Coffee,
-    Megaphone
+    Megaphone,
+    ArrowUpRight
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -225,7 +226,7 @@ const WelcomePage = () => {
                         <div className="flex items-center justify-between mb-8">
                             <div className="flex items-center gap-3">
                                 <div className="p-2 bg-success/10 text-success rounded-xl">
-                                    <CalendarIcon size={20} />
+                                    <Calendar size={20} />
                                 </div>
                                 <h3 className="text-lg font-black text-slate-800 tracking-tight">Your Attendance</h3>
                             </div>
