@@ -42,7 +42,7 @@ const TeacherDashboard = () => {
     const [loading, setLoading] = useState(true);
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedInsights, setSelectedInsights] = useState(null);
-    const [insightsLoading, setInsightsLoading] = useState(false);
+    // const [insightsLoading, setInsightsLoading] = useState(false);
 
     useEffect(() => {
         const loadDashboardData = async () => {
@@ -63,14 +63,14 @@ const TeacherDashboard = () => {
     }, []);
 
     const fetchInsights = async (assignmentId) => {
-        setInsightsLoading(true);
+        // setInsightsLoading(true);
         try {
             const response = await axios.get(`${API_BASE_URL}/api/evaluation/stats/${assignmentId}`);
             setSelectedInsights(response.data);
         } catch (err) {
             console.error("Failed to fetch insights", err);
         } finally {
-            setInsightsLoading(false);
+            // setInsightsLoading(false);
         }
     };
 

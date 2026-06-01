@@ -45,6 +45,18 @@ router.get('/list', async (req, res) => {
     }
 });
 
+// Delete a class
+router.delete('/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        await db.collection('classes').doc(id).delete();
+        res.json({ success: true, message: 'Class deleted successfully' });
+    } catch (error) {
+        console.error('Delete Class Error:', error);
+        res.status(500).json({ error: 'Failed to delete class' });
+    }
+});
+
 // Save study material/questions to Firestore
 router.post('/save-material', async (req, res) => {
     try {

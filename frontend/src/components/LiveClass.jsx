@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import API_BASE_URL from '../api';
-import { Video, Calendar, Clock, Plus, Users, Chrome, ExternalLink, Loader2, PlayCircle, ShieldCheck } from 'lucide-react';
+import { Video, Calendar, Clock, Plus, Users, Chrome, ExternalLink, Loader2, PlayCircle, ShieldCheck, Trash2 } from 'lucide-react';
 
 const LiveClass = () => {
     const [classes, setClasses] = useState([]);
@@ -57,6 +57,19 @@ const LiveClass = () => {
             fetchClasses();
         } catch (err) {
             console.error(err);
+        }
+    };
+
+    const handleDeleteClass = async (classId, e) => {
+        e.stopPropagation();
+        if (!window.confirm("Are you sure you want to delete this class?")) return;
+
+        try {
+            await axios.delete(`${API_BASE_URL}/api/class/${classId}`);
+            setClasses(classes.filter(c => c.id !== classId));
+        } catch (err) {
+            console.error("Failed to delete class", err);
+            alert("Failed to delete class");
         }
     };
 
@@ -165,6 +178,15 @@ const LiveClass = () => {
                                         Live Session
                                     </span>
                                 </div>
+                                {role === 'teacher' && (
+                                    <button
+                                        onClick={(e) => handleDeleteClass(c.id, e)}
+                                        className="absolute top-4 right-4 p-2 bg-white/90 rounded-full hover:bg-red-50 text-red-500 transition-all opacity-0 group-hover:opacity-100 z-20"
+                                        title="Delete Class"
+                                    >
+                                        <Trash2 size={16} />
+                                    </button>
+                                )}
                             </div>
                             <div className="p-8">
                                 <span className="text-[10px] font-black text-brand-600 uppercase tracking-[0.2em] mb-1 block">Room: {c.roomId}</span>

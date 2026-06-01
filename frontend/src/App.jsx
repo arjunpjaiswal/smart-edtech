@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate, useLocation, Navigate } from 'react-router-dom'
 import { BookOpen, Video, FileText, BarChart2, User, LogOut, MessageSquare, Database, Megaphone, Home, Mail, ListTodo } from 'lucide-react'
 

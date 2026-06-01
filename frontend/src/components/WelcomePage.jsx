@@ -34,7 +34,7 @@ const WelcomePage = () => {
     const [attendance, setAttendance] = useState([]);
     const [currentMonth, setCurrentMonth] = useState(new Date());
     const [loading, setLoading] = useState(true);
-    const [marking, setMarking] = useState(false); // Added marking state
+    // const [marking, setMarking] = useState(false); // Unused state
 
     const userName = localStorage.getItem('userName');
     const userRole = localStorage.getItem('userRole');
@@ -70,6 +70,7 @@ const WelcomePage = () => {
         fetchAttendance();
     }, [userId]);
 
+    /* 
     const handleMarkAttendance = async () => {
         setMarking(true);
         try {
@@ -85,6 +86,7 @@ const WelcomePage = () => {
             setMarking(false);
         }
     };
+    */
 
     const getGreeting = () => {
         const hour = currentTime.getHours();
